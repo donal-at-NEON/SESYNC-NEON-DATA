@@ -177,7 +177,7 @@ get_nlcd_percents <- function(aop_site, dataset_type = "Land_Cover"){
                           stringsAsFactors = FALSE)
     
     # We save the bins and their counts as a CSV, rather than plotting it.
-    hist_df %>% readr::write_csv(glue::glue("data/nlcd/imperv_hist_data-{dataset_type}-{aop_site}-{nlcd_year}.csv"))
+    hist_df %>% readr::write_csv(glue::glue("data/nlcd/imperv_hist_data-{aop_site}-{nlcd_year}.csv"))
     
     # We also plot a histogram of impervious survace % values while we're processing
     hist(nlcd_site_mask,
@@ -324,5 +324,5 @@ all_aop_impervious <- all_aop_impervious %>%
   tidyr::spread(key = class, value = area_m2,2, fill = 0) %>% ## What is the '2' doing in there? Typo?
   dplyr::select(Site, 4, 3, 2, 5, 6)
 
-all_aop_impervious %>% readr::write_csv(file.path(data_dir, "NEON-AOP-Impervioius.csv"))
+all_aop_impervious %>% readr::write_csv(file.path(data_dir, "NEON-AOP-Impervious.csv"))
 
